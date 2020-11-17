@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Configuration;
 using ExampleApp.Models;
 
 namespace ExampleApp.Controllers
@@ -12,15 +13,22 @@ namespace ExampleApp.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly IRepository _repository;
+        private string _message;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, IRepository repo, IConfiguration config)
         {
             _logger = logger;
+
+            _repository = repo;
+            _message = config["MESSAGE"] ?? "Essential Docker!";
+
         }
 
         public IActionResult Index()
         {
-            return View();
+            ViewBag.Message = _message;
+            return View(_repository.Products);
         }
 
         public IActionResult Privacy()
