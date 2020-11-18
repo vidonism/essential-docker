@@ -1,4 +1,4 @@
-## Stopped at page 51
+## Stopped at page 67
 
 
 ### Create GIT repo
@@ -28,5 +28,10 @@
 
 ### Run new image
 1. docker create -p 3000:80 --name exampleApp3000 vidonism/exampleapp:0.1
+2. docker start exampleApp3000
+
+
+### Committing Container Changes
+1. docker commit exampleApp3000 vidonism/exampleapp:changed
 
 
