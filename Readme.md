@@ -1,4 +1,4 @@
-## Stopped at page 67
+## Stopped at page 74
 
 
 ### Create GIT repo
@@ -34,4 +34,10 @@
 ### Committing Container Changes
 1. docker commit exampleApp3000 vidonism/exampleapp:changed
 
+### Creating a volume and running on it
+1. docker volume create --name testdata
+2. docker run --name vtest2 -v testdata:/data vidonism/vtest
 
+
+### Examine docker
+1. docker inspect vidonism/vtest
